@@ -7,9 +7,6 @@ thumb_dir=$cwd
 thumb_dir+=_t
 mkdir "$thumb_dir"
 
-# Prepare gallery.md file from gallery.template
-cat gallery.base > gallery.md
-
 # Rename JPGs with leading zeros, generate thumbs & move thumbs
 for file in [0-9]*.jp*
 do
@@ -24,15 +21,6 @@ for file in [0-9]*.jp*
 do
   composite -gravity south -geometry +0+10 stamp.png $file $file
 done
-
-# Make entry for each renamed .jpg in sorted order
-for file in $(ls [0-9]*.jp* | sort -n)
-do
-  echo \<img class=\"square-crop\" tabindex=1 src=\"$thumb_dir/$file\" /\>\<span class=\"f\"\>\<img src=\""$file"\" /\>\</span\> >> gallery.md
-done
-
-# Close div
-echo  \</div\> >> gallery.md
 
 # Change directory to new thumb_dir and generate thumbs
 cp [0-9]*.jp* $thumb_dir
