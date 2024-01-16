@@ -7,19 +7,14 @@ thumb_dir=$cwd
 thumb_dir+=_t
 mkdir "$thumb_dir"
 
-# Rename JPGs with leading zeros, generate thumbs & move thumbs
+# Rename JPGs with leading zeros, generate thumbs & apply watermark
 for file in [0-9]*.jp*
 do
   name=${file%.*}
   extension=${file##*.}
   new_name=`printf %04d.%s ${name} ${extension}`
   mv -n $file $new_name
-done
-
-# Apply watermark: stamp.png to each image
-for file in [0-9]*.jp*
-do
-  composite -gravity south -geometry +0+10 stamp.png $file $file
+  composite -gravity south -geometry +0+10 stamp.png $new_name $new_name
 done
 
 # Change directory to new thumb_dir and generate thumbs

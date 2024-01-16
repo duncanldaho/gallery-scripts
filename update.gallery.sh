@@ -5,7 +5,6 @@ cwd=${PWD##*/}
 cwd=${cwd:-/}
 thumb_dir=$cwd
 thumb_dir+=_t
-mkdir "$thumb_dir"
 
 # Prepare gallery.md file from gallery.template
 cat gallery.base > gallery.md
