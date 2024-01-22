@@ -8,7 +8,7 @@ thumbs.sh
 
 Uses imagemagik to rename images to [0000-9999].jpg, create a thumbnail directory, and generate thumbs.
 
-update.gallery.sh
+update-gallery.sh
 -------
 
 Uses gallery.base and creates a div with all the renamed images and thumbnails.
